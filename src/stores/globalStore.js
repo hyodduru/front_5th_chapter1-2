@@ -49,6 +49,26 @@ export const globalStore = createStore(
     error: null,
   },
   {
+    toggleLike(state, postId, user) {
+      const updatedPosts = state.posts.map((post) => {
+        if (post.id !== postId) return post;
+
+        const alreadyLiked = post.likeUsers.includes(user);
+        const newLikeUsers = alreadyLiked
+          ? post.likeUsers.filter((user) => user !== user)
+          : [...post.likeUsers, user];
+
+        return { ...post, likeUsers: newLikeUsers };
+      });
+
+      return { ...state, posts: updatedPosts };
+    },
+    addPost(state, post) {
+      console.log(state.posts);
+      const updatedPosts = [...state.posts, post];
+
+      return { ...state, posts: updatedPosts };
+    },
     logout(state) {
       userStorage.reset();
       return { ...state, currentUser: null, loggedIn: false };
