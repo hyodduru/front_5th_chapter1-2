@@ -1,4 +1,4 @@
-import { addEvent } from "./eventManager";
+import { updateAttributes } from "../utils/updateAttributes";
 
 export function createElement(vNode) {
   if (vNode === null || vNode === undefined || typeof vNode === "boolean") {
@@ -38,23 +38,4 @@ export function createElement(vNode) {
   }
 
   return $el;
-}
-
-function updateAttributes($el, props) {
-  for (const [key, value] of Object.entries(props || {})) {
-    if (key.startsWith("on") && typeof value === "function") {
-      const eventName = key.slice(2).toLowerCase();
-      $el.addEventListener(eventName, value);
-
-      addEvent($el, eventName, value);
-    } else if (key === "className") {
-      $el.className = value;
-    } else if (value === true) {
-      $el.setAttribute(key, "");
-    } else if (value === false || value == null) {
-      $el.removeAttribute(key);
-    } else {
-      $el.setAttribute(key, value);
-    }
-  }
 }

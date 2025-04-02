@@ -5,21 +5,14 @@ import { updateElement } from "./updateElement";
 
 export function renderElement(vNode, container) {
   const normalized = normalizeVNode(vNode);
-  const isCreate = !container._prevVNode;
 
-  if (isCreate) {
+  if (!container._prevVNode) {
     const dom = createElement(normalized);
     container.replaceChildren(dom);
   } else {
-    updateElement(
-      container.firstChild,
-      normalized.props,
-      container._prevVNode.props,
-    );
-    container.replaceChild(createElement(normalized), container.firstChild);
+    updateElement(container, normalized, container._prevVNode);
   }
 
   container._prevVNode = normalized;
-
   setupEventListeners(container);
 }
