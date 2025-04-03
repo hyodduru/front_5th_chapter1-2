@@ -37,7 +37,7 @@ export function updateAttributes($el, newProps = {}, oldProps = {}) {
 
   // 이전에 있었지만 새 props에는 없는 속성 → 제거
   for (const key of Object.keys(oldProps)) {
-    if (newProps[key] !== undefined) continue; // 여전히 있으면 제거 X
+    if (newProps[key] !== undefined) continue;
 
     // 이벤트 핸들러 제거
     if (key.startsWith("on") && typeof oldProps[key] === "function") {

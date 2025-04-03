@@ -5,8 +5,7 @@ const registeredRoots = new WeakSet();
 const eventsMap = new Map();
 
 // 각 root마다 어떤 eventType이 등록되었는지 추적
-const rootEventMap = new WeakMap(); // root → Set<eventType>
-
+const rootEventMap = new WeakMap();
 /**
  * 특정 root에 특정 eventType 리스너를 등록 (위임 방식)
  */
@@ -66,7 +65,6 @@ export function addEvent(element, eventType, handler, root = document.body) {
 
   const handlers = elementMap.get(element);
 
-  // 중복 핸들러 등록 방지
   if (handlers.has(handler)) return;
 
   handlers.add(handler);

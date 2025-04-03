@@ -43,7 +43,7 @@ export function createElement(vNode) {
   if (vNode.children) {
     const children = Array.isArray(vNode.children)
       ? vNode.children
-      : [vNode.children]; // 단일 자식도 배열로 변환
+      : [vNode.children];
 
     children.forEach((child) => {
       $el.appendChild(createElement(child));

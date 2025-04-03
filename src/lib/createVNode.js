@@ -5,14 +5,12 @@
  * - children: 자식 노드들 (JSX 내부 요소들)
  */
 export function createVNode(type, props, ...children) {
-  // children은 중첩 배열일 수 있으므로 평탄화 (ex. 조건부 렌더링, map 등)
   const flatChildren = children
-    .flat(Infinity) // 깊은 중첩 배열까지 모두 펼치기
+    .flat(Infinity)
     .filter(
       (child) =>
-        child !== null && child !== undefined && typeof child !== "boolean", // 렌더링 불필요한 값 제거
+        child !== null && child !== undefined && typeof child !== "boolean",
     );
 
-  // VNode 객체 반환
   return { type, props, children: flatChildren };
 }
