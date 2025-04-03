@@ -25,7 +25,7 @@ export function createElement(vNode) {
   }
 
   // 함수형 컴포넌트가 남아있으면 예외 발생 (normalizeVNode로 미리 처리되어야 함)
-  if (typeof vNode?.type === "function") {
+  if (typeof vNode.type === "function") {
     throw new Error(
       "컴포넌트는 createElement에서 처리하면 안 됩니다. normalizeVNode를 먼저 거쳐야 합니다.",
     );

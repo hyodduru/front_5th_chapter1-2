@@ -64,7 +64,6 @@ export const globalStore = createStore(
       return { ...state, posts: updatedPosts };
     },
     addPost(state, post) {
-      console.log(state.posts);
       const updatedPosts = [...state.posts, post];
 
       return { ...state, posts: updatedPosts };

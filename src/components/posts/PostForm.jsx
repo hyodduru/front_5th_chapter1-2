@@ -4,13 +4,13 @@ import { globalStore } from "../../stores";
 
 export const PostForm = () => {
   const { addPost } = globalStore.actions;
-  const { currentUser } = globalStore.getState();
+  const { currentUser, posts } = globalStore.getState();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const post = {
-      id: 4,
+      id: posts.length + 1,
       author: currentUser.username,
       time: Date.now(),
       content: document.getElementById("post-content").value,

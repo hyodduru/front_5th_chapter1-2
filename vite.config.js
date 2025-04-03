@@ -22,6 +22,7 @@ export default mergeConfig(
         input: {
           main: resolve(__dirname, "index.html"),
           hash: resolve(__dirname, "index.hash.html"),
+          404: resolve(__dirname, "404.html"),
         },
       },
     },
