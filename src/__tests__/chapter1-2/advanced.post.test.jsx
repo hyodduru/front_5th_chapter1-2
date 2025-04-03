@@ -86,7 +86,7 @@ describe("Chapter1-2 > 심화과제 > 포스트 관리", () => {
       );
     });
 
-    it.only("포스트에 좋아요를 클릭할 경우, 좋아요가 토글된다.", () => {
+    it("포스트에 좋아요를 클릭할 경우, 좋아요가 토글된다.", () => {
       const [$likeButton] = [
         ...document.querySelectorAll("#posts-container .like-button"),
       ];
