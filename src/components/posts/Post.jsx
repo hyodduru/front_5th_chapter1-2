@@ -15,7 +15,10 @@ export const Post = ({
   const { toggleLike } = globalStore.actions;
 
   const handleLikeClick = () => {
-    if (!loggedIn) alert("로그인 후 이용해주세요");
+    if (!loggedIn) {
+      alert("로그인 후 이용해주세요");
+      return;
+    }
     toggleLike(id, currentUser);
   };
 
